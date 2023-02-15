@@ -1,17 +1,16 @@
 <template>
-  <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
-  </div>
- 手动导入
-  <div>
-  <NButton>naive-ui</NButton>
-  </div>
+<!--  路由出口-->
+<!--  路由匹配到组件渲染在这里-->
+  <router-view></router-view>
 
+
+
+  <!--使用 router-link 组件进行导航 -->
+  <!--通过传递 `to` 来指定链接 -->
+  <!--`<router-link>` 将呈现一个带有正确 `href` 属性的 `<a>` 标签-->
+  <router-link to="/">Go to Home</router-link>
+  |
+  <router-link to="/login">Go to Login</router-link>
 </template>
 <script setup lang="ts">
 //手动导入
