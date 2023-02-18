@@ -178,6 +178,7 @@
 <!--</style>-->
 
 
+<!--<script src="../../vite-env.d.ts"></script>-->
 <template>
   <div class="view-account">
     <div class="view-account-header"></div>
@@ -239,30 +240,32 @@ import { useMessage } from 'naive-ui';
 
 const message = useMessage();
 (<any>window).$message = useMessage();
-
+//定义了一个接口说明他们的类型  根据api登录 Body参数设置
 interface FormState {
   email: string;
   password: string;
 }
-
+//表单验证 做了一个引用
 const formRef = ref();
+//点击登录之后按钮加载状态 true转圈圈
 const loading = ref(false);
 const userStore = useUserStore();
 const router = useRouter();
-
+//在表单里面进行双向绑定的 发送给后台
+//v-model:value="formInline.username"
 const formInline = reactive({
   username: 'super@a.com',
   password: '123123'
 })
 
-// 验证规则
+// 验证规则 表单验证
 const rules = {
   // 失去焦点时触发
   username: {required: true, message: "请输入用户名", trigger: "blur"},
   password: {required: true, message: "请输入密码", trigger: "blur"},
 };
 
-
+//点击事件
 const handleSubmit = () => {
   // 表单验证
   formRef.value.validate(async (errors: any) => {
