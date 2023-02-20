@@ -69,6 +69,7 @@
 import {defineStore} from "pinia";
 //导入api 文件夹中auth.ts 的登录方法
 import {login,user} from "@/api/auth";
+import {getUserInfo} from "@/api/auth";
 
 // 定义state中的数据类型
 export interface IUserState {
@@ -142,7 +143,9 @@ export const useUserStore = defineStore({
         //userInfo 是参数名 指定是对象类型
         //我们一会在登录页面调状态的登录方法就会把登录的信息传到状态 user.ts 步异登录方法的userInfo 这个信息再传给她前面的login
         //最外层的login是状态的登录方法
-        async login(userInfo: object) {
+        //return 到return response;  又在登录页面
+        //在登录页面调用的login
+        async login(userInfo: object) {   //userInfo
             try {
                 //这个login是上面导入的login（是api里面的登录方法）
                 //调请求（异步请求） response拿到响应 判断响应这里看的手册api返回的值
@@ -154,6 +157,7 @@ export const useUserStore = defineStore({
                     this.setToken(response.access_token);
                     // 登录之后，token已经拿到了，然后getUser获取调用,
                     //获取用户信息
+                    //return 到return response;
                     return await this.getUser();
                 }
             } catch (error) {
@@ -163,9 +167,11 @@ export const useUserStore = defineStore({
 
         //异步获取用户信息方法  异步登录走的请求
         //在这个之前先写登录页面
+        //登录写完之后 就要拿获取头像，用户名...的方法
+        //return到 return response;
         async getUser(){
             try{
-                const response:any = await user();
+                const response:any = await getUserInfo();
                 this.setUserInfo(response);
                 this.setAvatar(response.avatar_url);
                 this.setUserName(response.name);

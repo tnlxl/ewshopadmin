@@ -8,7 +8,9 @@
         <!--                <PageHeader></PageHeader>-->
       </n-layout-header>
       <n-layout-content content-style="padding: 0px;background-color:#f0f2f5">
+<!--        内容-->
         <div class="content">
+<!--          当点击对应的路由的时候这里可以实现跳转-->
           <router-view></router-view>
         </div>
       </n-layout-content>

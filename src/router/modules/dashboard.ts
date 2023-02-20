@@ -12,25 +12,32 @@ const  routeName = "dashboard";
  // * @param meta.icon 菜单图标
  // * @param meta.sort 排序越小越排前
  // */
+//定义数组来放路由格式
+
 const routes:Array<RouteRecordRaw> = [
     {
         path:"/dashboard",
+        //上边定义的name
         name:routeName,
         component:Layout,
+        //重定向
         redirect:"/dashboard/console",
         meta:{
             title:"首页统计",
             icon :renderIcon(Browsers),
             sort:0,
         },
+        //子集路由
         children:[
             {
                 path:"console",
                 name:`${routeName}_console`,
                 meta:{
                     title:"主控台",
+                    //小图标
                     icon:"",
                 },
+                //指向实际展示的页面
                 component:()=> import('@/views/dashboard/Dashboard.vue')
             }
         ]

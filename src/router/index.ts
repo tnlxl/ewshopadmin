@@ -52,6 +52,7 @@ const router = createRouter({
     history:createWebHistory(),
     routes:baseRouters,
 })
+//前置守卫
 router.beforeEach((to,from,next)=>{
     if(to.name !="login"){
     //    如果不是登录页面，判断是否登录

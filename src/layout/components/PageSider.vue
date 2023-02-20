@@ -168,6 +168,9 @@ onMounted(()=>{
   }
 });
 const router = useRouter();
+//调用生成菜单的方法 传routeModuleList进去就能调路由了
+//menuOptions 就挂载到上边去了
+//routeModuleList 是moudules index.ts 拿子级路由
 const menuOptions = generatorMenu(routeModuleList);
 const handleUpdateValue=(key) =>{
   // console.log(key,item);
